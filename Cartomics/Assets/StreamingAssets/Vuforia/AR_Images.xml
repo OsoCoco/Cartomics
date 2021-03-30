@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
+  <Tracking>
+    <ImageTarget name="AR_Image_Figuras" size="0.200000 0.125000" />
+    <ImageTarget name="AR_Image_Triangulos" size="0.200000 0.140000" />
+    <ImageTarget name="AR_Image_Azul" size="0.200000 0.112500" />
+    <ImageTarget name="AR_Image_Cubos" size="0.200000 0.112500" />
+  </Tracking>
+</QCARConfig>
