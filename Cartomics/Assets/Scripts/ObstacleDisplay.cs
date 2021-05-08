@@ -5,31 +5,56 @@ using UnityEngine.EventSystems;
 
 public class ObstacleDisplay : MonoBehaviour, IPointerClickHandler
 {
+    //ASIGNO EL SCRIPTABLE OBJECT
     public Obstacle myObstacle;
+    //ASIGNAMOS EL GAMEMANAGER
+    private GameManager myMaster;
+
+    private void Start()
+    {
+        //BUSCAMOS EL GAMEMANAGER
+        myMaster = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        //GameObject.FindObjectOfType<GameManager>();
+
+        //ASIGNAMOS EL ANIMATOR
+        myObstacle.obsAnimator = GetComponent<Animator>();
+        myObstacle.ON = true;
+    }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (myObstacle.functionWithTime == false)
+        //SI ES EL ESTAD ES PREP ACTIVAMOS EL INPUT
+        if (myMaster.myGameStates == GameStates.PREP)
         {
-            if (myObstacle.canActive == true)
+            //APAGAMOS O ENCENDEMOS EL OBSTACULO
+            myObstacle.ON = !myObstacle.ON;
+
+            Debug.Log(myObstacle.ON);
+            if (myObstacle.ON == true)
+            {
+                StartCoroutine(myObstacle.TurnOffObstacle());
+            }
+            else
+            {
+                StartCoroutine(myObstacle.TurnOnObstacle());
+            }
+
+            /*if (myObstacle.canActive == true)
             {
                 if (myObstacle.ON == true)
                 {
                     StartCoroutine(myObstacle.TurnOffObstacle());
                 }
-                else if (myObstacle.ON == false)
-                {
-                    StartCoroutine(myObstacle.TurnOnObstacle());
-                }
-            }
-        }
-        else if (myObstacle.functionWithTime == true)
-        {
-            if (myObstacle.canActive == true)
-            {
-                StartCoroutine(myObstacle.TurnOffObstacleByTime());
+ 
             }
 
+            if (myObstacle.canActive == true && myObstacle.ON == false)
+            {
+                StartCoroutine(myObstacle.TurnOnObstacle());
+            }*/
+
         }
+
     }
+
 }

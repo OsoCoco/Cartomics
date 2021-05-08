@@ -4,19 +4,19 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.AI;
 
-public class Movement : MonoBehaviour,IPointerClickHandler
+public class Movement : MonoBehaviour
 {
-    
-    [SerializeField] NavMeshAgent agent;
-    public void OnPointerClick(PointerEventData eventData)
+    public NavMeshAgent myAgent;
+    public Transform goal;
+
+    public void Start()
     {
-        RaycastHit hit;
-        Ray ray = Camera.main.ScreenPointToRay(eventData.position);
-        if (Physics.Raycast(ray, out hit))
-        {
-            agent.SetDestination(hit.point);
-        }
+        StartCoroutine(GoToTarget(goal));
     }
 
-   
+    public IEnumerator GoToTarget(Transform myTarget)
+    {
+        myAgent.SetDestination(myTarget.position);
+        yield return null;
+    }
 }

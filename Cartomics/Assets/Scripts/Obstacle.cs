@@ -7,34 +7,36 @@ public class Obstacle : ScriptableObject
 {
     public Animator obsAnimator;
     public string turnOnAction, turnOffAction;
-    public bool functionWithTime = false;
+    //public bool functionWithTime = false;
     public bool ON = true;
-    public bool canActive = true;
+    //public bool canActive = true;
 
     [SerializeField]
     private float delayForUse = 3.0f;
-    [SerializeField]
-    private float waitForActive = 1.5f;
+    //[SerializeField]
+    //private float waitForActive = 1.5f;
 
     public IEnumerator TurnOffObstacle()
     {
-        ON = false;
-        canActive = false;
         obsAnimator.SetTrigger(turnOffAction);
-        yield return new WaitForSeconds(delayForUse);
-        canActive = true;
+        //ON = false;
+        yield return null;
+        //canActive = false;
+        //yield return new WaitForSeconds(delayForUse);
+        //canActive = true;
     }
 
     public IEnumerator TurnOnObstacle()
     {
-        ON = true;
-        canActive = false;
         obsAnimator.SetTrigger(turnOnAction);
-        yield return new WaitForSeconds(delayForUse);
-        canActive = true;
+        //ON = true;
+        yield return null;
+        //canActive = false;
+        //yield return new WaitForSeconds(delayForUse);
+        //canActive = true;
     }
 
-    public IEnumerator TurnOffObstacleByTime()
+    /*public IEnumerator TurnOffObstacleByTime()
     {
         ON = false;
         canActive = false;
@@ -44,6 +46,6 @@ public class Obstacle : ScriptableObject
         obsAnimator.SetTrigger(turnOnAction);
         yield return new WaitForSeconds(waitForActive);
         canActive = true;
-    }
+    }/*/
 
 }
