@@ -10,7 +10,7 @@ public class MasterLemming : MonoBehaviour
     //ASIGNAMOS LA META DEL NIVEL Y LOS LEMMINGS VIVOS
     public Transform goalPosition;
     public List<Lemmings> lemmingsAlive;
-
+    public List<Lemmings> lemmingsDeath;
     //
     public float delayToGo;
 
@@ -20,10 +20,7 @@ public class MasterLemming : MonoBehaviour
         myMaster = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 
-    private void Update()
-    {
-    }
-
+    //FUNCION PARA ASIGNARLE AL NAVMESH AGENT SU META DE DESTINO Y MOVER TODOS LOS LEMMINGS
     public IEnumerator GoBoys()
     {
         if (myMaster.myGameStates == GameStates.GAME)
@@ -36,6 +33,37 @@ public class MasterLemming : MonoBehaviour
             }
         }
 
+    }
+
+    //ACTUALIZAMOS LA LISTA DE LOS LEMMINGS VIVOS
+    public void UpdateList(Lemmings myBoyDead)
+    {
+        /*foreach(Lemmings l in lemmingsDeath)
+        {
+            if(lemmingsAlive.Contains(l))
+            {
+                lemmingsAlive.Remove(l);
+            }
+            else
+            {
+                return;
+            }
+        }/*/
+        if(lemmingsAlive.Contains(myBoyDead))
+        {
+            lemmingsAlive.Remove(myBoyDead);
+        }
+        else
+        {
+            return;
+        }
+
+    }
+
+    public void CheckForLost()
+    {
+        if(lemmingsAlive.Count<=0)
+            myMaster.LOST();
     }
 
 }

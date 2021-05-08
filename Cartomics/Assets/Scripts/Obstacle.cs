@@ -11,8 +11,8 @@ public class Obstacle : ScriptableObject
     public bool ON = true;
     //public bool canActive = true;
 
-    [SerializeField]
-    private float delayForUse = 3.0f;
+    //[SerializeField]
+    //private float delayForUse = 3.0f;
     //[SerializeField]
     //private float waitForActive = 1.5f;
 

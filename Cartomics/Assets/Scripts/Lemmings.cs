@@ -13,6 +13,14 @@ public class Lemmings : MonoBehaviour
 
     //ASIGNAMOS SI ESTAN VIVOS O NO :O
     public bool isLive = true;
+    public bool isPrisioner = false;
+
+    //ASIGNAMOS LA LAYER DE LOS OBSTACULOS
+    public LayerMask maskObstacle;
+
+    //TIEMPO PARA PERDER SI LOS LEMMINGS CHOCAN CON UN OBSTACULO
+    public float timeToLose;
+    private float startTime;
 
     private void Start()
     {
@@ -21,14 +29,60 @@ public class Lemmings : MonoBehaviour
         myAgent = gameObject.GetComponent<NavMeshAgent>();
 
         //LLAMAMOS LA FUNCION
-        InitLive();
+        if (isPrisioner == false)
+        {
+            InitLive();
+        }
+
+
+        //Igualamos los tiempos
+        startTime = timeToLose;
     }
 
+    private void FixedUpdate()
+    {
+        RaycastHit hit;
+        //DIBUJAMOS Y CREAMOS UN RAY CAST QUE CHECA SI LOS LEMMINGS CHOCAN CON UN OBSTACULO
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 1, maskObstacle))
+        {
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            Debug.Log("Did Hit");
+            if (timeToLose > 0)
+            {
+                timeToLose -= Time.fixedDeltaTime;
+                
+            }
+            else
+            {
+                if(myDady.lemmingsAlive.Count>0)
+                {
+                    Dead();
+                    myDady.CheckForLost();
 
+                }
+
+            }
+
+        }
+        else
+        {
+            timeToLose = startTime;
+            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
+        }
+    }
     //INICIALIZAMOS AL LEMMING Y LO AGREGAMOS CON SU PAPI UWU
     public void InitLive()
     {
         myDady.lemmingsAlive.Add(this);
+    }
+
+    //SE MUERE EL LEMMING Y LO QUITAMOS DE SU PAPI U.U
+    public void Dead()
+    {
+        isLive = false;
+        myDady.lemmingsDeath.Add(this);
+        myDady.UpdateList(this);
+        gameObject.SetActive(false);
     }
 
     //MANDAMOS AL LEMMING A SU DESTINO
@@ -37,10 +91,5 @@ public class Lemmings : MonoBehaviour
         myAgent.SetDestination(myTarget.position);
     }
 
-    //SE MUERE EL LEMMING Y LO QUITAMOS DE SU PAPI U.U
-    public void Dead()
-    {
-        isLive = false;
-        myDady.lemmingsAlive.Remove(this);
-    }
+
 }
