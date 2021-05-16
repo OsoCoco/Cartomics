@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     //ASIGNAMOS EL TMPRO
     [SerializeField] TMP_Text textTime;
     [SerializeField] TMP_Text textStateGame;
-    [SerializeField] GameObject winPanel, lostPanel;
+    [SerializeField] GameObject winPanel, lostPanel, startButton;
 
     //ASIGANOS EL TIEMPO DE PREPARACION Y VARIABLE DEL TIEMPO ACTUAL
     [Range(1, 100)]
@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator PrepPhase()
     {
         //RESTAMOS EL TIEMPO DE ESPERA HASTA LA SIQUIENTE FASE
+        Invoke("ShowStartButton", 3f);
         while (time > 0)
         {
             yield return new WaitForSeconds(1.0f);
@@ -109,6 +110,17 @@ public class GameManager : MonoBehaviour
     public void NextLevel()
     {
         SceneManager.LoadScene(nextLevel);
+    }
+
+    public void StartLevel()
+    {
+        time = 1;
+        startButton.SetActive(false);
+    }
+
+    private void ShowStartButton()
+    {
+        startButton.SetActive(true);
     }
 
 }

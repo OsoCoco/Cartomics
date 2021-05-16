@@ -86,8 +86,9 @@ public class Lemmings : MonoBehaviour
     }
 
     //MANDAMOS AL LEMMING A SU DESTINO
-    public void GoToTarget(Transform myTarget)
+    public IEnumerator GoToTarget(Transform myTarget, float delay)
     {
+        yield return new WaitForSeconds(delay);
         myAgent.SetDestination(myTarget.position);
     }
 

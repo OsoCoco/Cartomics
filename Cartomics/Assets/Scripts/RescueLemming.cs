@@ -20,7 +20,7 @@ public class RescueLemming : MonoBehaviour
             Debug.Log("Ganaste un Lemming C:");
             myPrisioner.GetComponent<Collider>().enabled = true;
             myPrisioner.GetComponent<Lemmings>().InitLive();
-            myPrisioner.GetComponent<Lemmings>().GoToTarget(myMasterLemming.goalPosition);
+            StartCoroutine(myPrisioner.GetComponent<Lemmings>().GoToTarget(myMasterLemming.goalPosition, 1.25f));
             gameObject.GetComponent<Collider>().enabled = false;
 
         }

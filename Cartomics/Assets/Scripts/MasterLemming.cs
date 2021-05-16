@@ -26,11 +26,13 @@ public class MasterLemming : MonoBehaviour
         if (myMaster.myGameStates == GameStates.GAME)
         {
             Debug.Log("GO BOYS");
+            float myDelay = 0;
             for (int i = 0; i <= lemmingsAlive.Count - 1; i++)
             {
-                yield return new WaitForSeconds(delayToGo);
-                lemmingsAlive[i].GoToTarget(goalPosition);
+                myDelay += 1;
+                StartCoroutine(lemmingsAlive[i].GoToTarget(goalPosition, myDelay));
             }
+           yield return null;
         }
 
     }

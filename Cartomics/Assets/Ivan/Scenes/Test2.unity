@@ -2625,6 +2625,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 234418766}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &236519778 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8250672024817009809, guid: bdc82d2b7d7cb0942bf2fff82051c54e,
+    type: 3}
+  m_PrefabInstance: {fileID: 2120452833}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5396589f8be815546ba2d769268d9aae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &263050945
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3794,7 +3806,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.3
-  m_Speed: 3.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 60
   m_AngularSpeed: 120
@@ -4529,7 +4541,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.3
-  m_Speed: 3.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 60
   m_AngularSpeed: 120
@@ -5239,7 +5251,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.3
-  m_Speed: 3.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 60
   m_AngularSpeed: 120
@@ -5720,6 +5732,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cdf3e08f0c6d5264c9fb397f4760d0a1,
     type: 3}
   m_PrefabInstance: {fileID: 611123001}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &625827470 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4146898193467279109, guid: 3ffd4c8c56c2fc4448d70468c650d0e1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1093044747}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &632498708
 PrefabInstance:
@@ -6444,7 +6462,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.3
-  m_Speed: 3.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 60
   m_AngularSpeed: 120
@@ -8950,6 +8968,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7213755601914637232, guid: 3ffd4c8c56c2fc4448d70468c650d0e1,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 236519778}
     - target: {fileID: 8092463684772632858, guid: 3ffd4c8c56c2fc4448d70468c650d0e1,
         type: 3}
       propertyPath: m_Pivot.x
@@ -15792,7 +15815,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.3
-  m_Speed: 3.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 60
   m_AngularSpeed: 120
@@ -17858,7 +17881,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.3
-  m_Speed: 3.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 60
   m_AngularSpeed: 120
@@ -18045,7 +18068,7 @@ PrefabInstance:
     - target: {fileID: 8250672024817009809, guid: bdc82d2b7d7cb0942bf2fff82051c54e,
         type: 3}
       propertyPath: prepTime
-      value: 50
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8250672024817009809, guid: bdc82d2b7d7cb0942bf2fff82051c54e,
         type: 3}
@@ -18062,6 +18085,11 @@ PrefabInstance:
       propertyPath: lostPanel
       value: 
       objectReference: {fileID: 1093044748}
+    - target: {fileID: 8250672024817009809, guid: bdc82d2b7d7cb0942bf2fff82051c54e,
+        type: 3}
+      propertyPath: startButton
+      value: 
+      objectReference: {fileID: 625827470}
     - target: {fileID: 8250672024817009809, guid: bdc82d2b7d7cb0942bf2fff82051c54e,
         type: 3}
       propertyPath: textStateGame
