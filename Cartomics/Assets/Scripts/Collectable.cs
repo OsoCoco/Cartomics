@@ -13,18 +13,15 @@ public class Collectable : MonoBehaviour, IPointerClickHandler
     private void Start()
     {
         //BUSCAMOS EL GAMEMANAGER
-        myGameManager = FindObjectOfType<GameManager>();
+         myGameManager = FindObjectOfType<GameManager>();
     }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(canFound==true)
-        {
-            canFound = false;
-            myGameManager.foundCollectables += 1;
-            gameObject.SetActive(false);
-        }
-
+          //source.PlayOneShot(Clip);
+          myGameManager.UpdateCollectable();
+          myGameManager.foundCollectables += 1;
+          gameObject.SetActive(false);
     }
 
 }

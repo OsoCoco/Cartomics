@@ -50,15 +50,12 @@ public class Lemmings : MonoBehaviour
             if (timeToLose > 0)
             {
                 timeToLose -= Time.fixedDeltaTime;
-                
             }
             else
             {
                 if(myDady.lemmingsAlive.Count>0)
                 {
                     Dead();
-                    myDady.CheckForLost();
-
                 }
 
             }
@@ -83,6 +80,22 @@ public class Lemmings : MonoBehaviour
         myDady.lemmingsDeath.Add(this);
         myDady.UpdateList(this);
         gameObject.SetActive(false);
+
+        if(!isPrisioner)
+        {
+            myDady.myMaster.UpdateUILemmingDeath();
+            myDady.myMaster.aliveLemmings--;
+        }
+
+        if (isPrisioner)
+        {
+            //myDady.myMaster.RemoveRescueLemmingsUI();
+            myDady.myMaster.rescuedLemmings --;
+
+        }
+
+        myDady.CheckForLost();
+
     }
 
     //MANDAMOS AL LEMMING A SU DESTINO

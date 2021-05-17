@@ -5,7 +5,7 @@ using UnityEngine;
 public class MasterLemming : MonoBehaviour
 {
     //ASIGNAMOS EL GAMEMANAGER
-    private GameManager myMaster;
+    public GameManager myMaster;
 
     //ASIGNAMOS LA META DEL NIVEL Y LOS LEMMINGS VIVOS
     public Transform goalPosition;
@@ -64,7 +64,7 @@ public class MasterLemming : MonoBehaviour
 
     public void CheckForLost()
     {
-        if(lemmingsAlive.Count<=0)
+        if(lemmingsAlive.Count == 0)
             myMaster.LOST();
     }
 

@@ -20,6 +20,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] TMP_Text textTime;
     [SerializeField] TMP_Text textStateGame;
     [SerializeField] GameObject winPanel, lostPanel, startButton;
+    [SerializeField] Image[] collecionables;
+    [SerializeField] Image[] rescued;
+    [SerializeField] GameObject lemmingsPanel;
+    [SerializeField] Image  lemmingAliveUI;
+    [SerializeField] Sprite lemmingDeathSprite;
+    [SerializeField] Sprite rescuedSprite;
+    [SerializeField] Sprite deathRescue;
+
+    [SerializeField] List<Image> heartImages;
 
     //ASIGANOS EL TIEMPO DE PREPARACION Y VARIABLE DEL TIEMPO ACTUAL
     [Range(1, 100)]
@@ -35,21 +44,27 @@ public class GameManager : MonoBehaviour
 
     //ASIGNAMOS EL NUMERO DE LEMMINGS VIVIOS, NUMERO DE LEMMINGS ENCONTRADOS Y COLECCIONABLES
     public int rescuedLemmings;
-    public int foundCollectables;
+    public int foundCollectables = 0;
     public int aliveLemmings;
 
     //SIGUIENTE NIVEL
     public int nextLevel;
 
 
+    private void Awake()
+    {
+        //BUSCAMOS AL MASTERLEMMING
+        myBoy = FindObjectOfType<MasterLemming>();
+    }
     private void Start()
     {
         //APAGAMOS LA UI
         winPanel.SetActive(false);
         lostPanel.SetActive(false);
+        startButton.SetActive(false);
 
-        //BUSCAMOS AL MASTERLEMMING
-        myBoy = FindObjectOfType<MasterLemming>();
+
+        aliveLemmings = myBoy.lemmingsAlive.Count;
 
         //INICIALIZAMOS ESTADO "PREP" Y LA FASE DE PREPARACION
         myGameStates = GameStates.PREP;
@@ -60,6 +75,7 @@ public class GameManager : MonoBehaviour
             StartCoroutine(PrepPhase());
         }
 
+        InitUIAliveLemmings();
     }
 
     //CORRUTINA O CREACION DE LA FASE DE PREPARACION
@@ -128,4 +144,35 @@ public class GameManager : MonoBehaviour
         startButton.SetActive(true);
     }
 
+    public void UpdateCollectable()
+    {
+        if(foundCollectables < collecionables.Length )
+            collecionables[foundCollectables].color = Color.white; 
+    }
+
+    public void InitUIAliveLemmings()
+    {
+        for (int i = 0; i < aliveLemmings; i++)
+        {
+            Image go = Instantiate(lemmingAliveUI, lemmingsPanel.transform);
+
+            go.transform.SetParent(lemmingsPanel.transform);
+
+            heartImages.Add(go);
+        }
+    }
+
+    public void UpdateUILemmingDeath()
+    {
+        if(aliveLemmings > 0)
+            heartImages[aliveLemmings - 1].sprite = lemmingDeathSprite;
+    }
+
+    public void AddRescueLemmingsUI()
+    {
+        if (rescuedLemmings < rescued.Length)
+            rescued[rescuedLemmings].sprite = rescuedSprite;
+    }
+
+  
 }

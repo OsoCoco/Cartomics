@@ -19,7 +19,8 @@ public class RescueLemming : MonoBehaviour
     {
         if (other.GetComponent<Lemmings>().isPrisioner == false)
         {
-            Debug.Log("Ganaste un Lemming C:");
+            //Debug.Log("Ganaste un Lemming C:");
+            myGameManager.AddRescueLemmingsUI();
             myGameManager.rescuedLemmings += 1;
             myPrisioner.GetComponent<Collider>().enabled = true;
             myPrisioner.GetComponent<Lemmings>().InitLive();
