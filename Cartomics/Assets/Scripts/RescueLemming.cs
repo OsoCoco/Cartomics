@@ -6,11 +6,13 @@ public class RescueLemming : MonoBehaviour
 {
     public GameObject myPrisioner;
     private MasterLemming myMasterLemming;
+    private GameManager myGameManager;
 
     private void Start()
     {
         myPrisioner.GetComponent<Collider>().enabled = false;
         myMasterLemming = FindObjectOfType<MasterLemming>();
+        myGameManager = FindObjectOfType<GameManager>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -18,9 +20,10 @@ public class RescueLemming : MonoBehaviour
         if (other.GetComponent<Lemmings>().isPrisioner == false)
         {
             Debug.Log("Ganaste un Lemming C:");
+            myGameManager.rescuedLemmings += 1;
             myPrisioner.GetComponent<Collider>().enabled = true;
             myPrisioner.GetComponent<Lemmings>().InitLive();
-            StartCoroutine(myPrisioner.GetComponent<Lemmings>().GoToTarget(myMasterLemming.goalPosition, 1.25f));
+            StartCoroutine(myPrisioner.GetComponent<Lemmings>().GoToTarget(myMasterLemming.goalPosition, 1f));
             gameObject.GetComponent<Collider>().enabled = false;
 
         }

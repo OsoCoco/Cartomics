@@ -33,6 +33,11 @@ public class GameManager : MonoBehaviour
     private MasterLemming myBoy;
     public int lemmings;
 
+    //ASIGNAMOS EL NUMERO DE LEMMINGS VIVIOS, NUMERO DE LEMMINGS ENCONTRADOS Y COLECCIONABLES
+    public int rescuedLemmings;
+    public int foundCollectables;
+    public int aliveLemmings;
+
     //SIGUIENTE NIVEL
     public int nextLevel;
 
